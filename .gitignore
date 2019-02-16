@@ -3,6 +3,7 @@
 *.iml
 *.kotlin_module
 Source_Code/
+apache-tomcat-9.0.16/
 
 ### Java template
 # Compiled class file
