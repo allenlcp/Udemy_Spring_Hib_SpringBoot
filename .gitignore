@@ -5,6 +5,9 @@
 Source_Code/
 apache-tomcat-9.0.16/
 
+### Maven generated
+target/
+
 ### Java template
 # Compiled class file
 *.class
