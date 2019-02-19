@@ -360,3 +360,21 @@ Use the following steps to add it to your Java Build Path.
 Eclipse will perform a rebuild of your project and it will resolve the related build errors.
 ___
 
+
+FAQ: Why we are using JPA Annotation instead of Hibernate ?
+
+
+
+QUESTION:
+Why we are using JPA Annotation instead of Hibernate ?
+
+For example, why we are not using this org.hibernate.annotations.Entity?
+
+ANSWER:
+JPA is a standard specification. Hibernate is an implementation of the JPA specification.
+
+Hibernate implements all of the JPA annotations.
+
+The Hibernate team recommends the use of JPA annotations as a best practice.
+
+___
