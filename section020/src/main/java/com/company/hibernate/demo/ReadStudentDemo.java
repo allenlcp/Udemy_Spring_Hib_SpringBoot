@@ -5,9 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Date;
-
-public class CreateStudentDemo {
+public class ReadStudentDemo {
     public static void main(String[] args) {
 
         // create session factory
@@ -22,16 +20,33 @@ public class CreateStudentDemo {
         try{
             // create a student object
             System.out.println("Creation new student object... ");
-            String theDateOfBirthStr = "31/12/1998";
-            Date theDateOfBirth = DateUtils.parseDate(theDateOfBirthStr);
-            Student tempStudent = new Student("Paul", "Wall", "paul@company.com",theDateOfBirth);
+            Student tempStudent = new Student("Daffy", "Duck", "daffy@company.com");
 
             // start a transaction
             session.beginTransaction();
 
             // save the student object
             System.out.println("Saving the student...");
+            System.out.println(tempStudent);
             session.save(tempStudent);
+
+            // commit transaction
+            session.getTransaction().commit();
+
+
+            // Reading object ******************
+            System.out.println("Saved student, Generated id: " + tempStudent.getId());
+
+            // now get a new session and start transaction
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+
+            // retrieve student based on id: pk
+            System.out.println("\nGetting student with id: " + tempStudent.getId());
+            Student myStudent = session.get(Student.class, tempStudent.getId());
+
+            System.out.println("Get complete: " + myStudent);
+
 
             // commit transaction
             session.getTransaction().commit();

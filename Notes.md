@@ -378,3 +378,47 @@ Hibernate implements all of the JPA annotations.
 The Hibernate team recommends the use of JPA annotations as a best practice.
 
 ___
+
+
+## **Hibernate**
+@Entity
+@Table(name="student")
+
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+@Column(name="id')
+
+> Create Objects
+session.save(obj);
+
+> Retrieving Objects
+session.get(Obj.class, obj.getId());
+
+> Update
+
+___
+
+Section 21, Lecture 192
+If you are using Hibernate 5.2 or higher, then the Query list() method has been deprecated.
+
+In your code you should make the following update:
+
+Replace
+session.createQuery("from Student").list()
+
+With
+session.createQuery("from Student").getResultList()
+
+___
+
+
+## **Advanced Mapping**
+> One to One
+> One to Many, Many to One
+> Many to Many
+
+> Eager vs Lazy Loading
+>* Eager will retrieve everything
+>* Lazy will retrieve on request
+
+> Uni-Directional vs Bi-Directional
