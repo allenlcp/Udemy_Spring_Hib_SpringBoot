@@ -264,9 +264,6 @@ public class TennisCoach implements Coach {
 
 FAQ: How to inject properties file using Java annotations
 Section 8, Lecture 74
-FAQ: How to inject properties file using Java annotations
-
-
 
 Answer:
 
@@ -300,3 +297,4 @@ private String email;
 @Value("${foo.team}")
 private String team;
 ---
+
