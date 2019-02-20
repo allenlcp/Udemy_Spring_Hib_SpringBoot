@@ -7,6 +7,13 @@
     <groupId>groupId</groupId>
     <artifactId>section35_aop</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+    </dependencies>
 
-    
+
 </project>
