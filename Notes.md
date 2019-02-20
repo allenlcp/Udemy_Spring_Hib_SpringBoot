@@ -414,11 +414,32 @@ ___
 
 ## **Advanced Mapping**
 > One to One
+>* 
+
 > One to Many, Many to One
 > Many to Many
 
 > Eager vs Lazy Loading
+> Prefer lazy loading - only load data when absolutely needed
 >* Eager will retrieve everything
+>* Will load all dependent entities - e.g load instructor and all of their courses at once
 >* Lazy will retrieve on request
+>* Will load the main entity first - on demand loading
+>* Needs hibernate session open - throw exception if closed
+>* Option to retrieve data (most common - others available)
+>* 1. session.get can call appropriate getter method
+>* 2. Hibernate query with HQL
 
+``` java
+fetch=FetchType.LAZY
+fetch=FetchType.EAGER
+
+// Default
+1to1 -> Eager
+1toM -> Lazy
+Mto1 -> Eager
+MtoM -> Lazy
+```
 > Uni-Directional vs Bi-Directional
+
+
