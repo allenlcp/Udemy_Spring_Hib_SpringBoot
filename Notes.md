@@ -491,3 +491,50 @@ ___
 
 @After runs before (@AfterThrowing and @AfterReturning)
 @After don't have access to the results and exceptions
+
+___
+
+Jackson
+-> use setter to convert JSON to POJO
+-> use getter to convert POJO to JSON
+
+Use to ignore un-modelled properties - otherwise it will cause an exception
+@JsonIgnoreProperties(ignoreUnknown=true)
+
+
+| HTTP Method | CRUD Op |   |   |   |
+|---|---|---|---|---|
+| POST | Create a new entity |   |   |   |
+| GET | Read a list of entities or single entity |   |   |   |
+| PUT | Update an existing entity |   |   |   |
+| DELETE | Delete an existing entity |   |   |   |
+
+HTTP Request Message
+> Request line: the HTTP command
+> Header var: request metadata
+> Message body: contents of message
+
+HTTP Response Message
+> Request line: server protocol and status code
+> Header var: response metadata
+> Message body: contents of message
+
+HTTP Resposne - Status Codes
+| Code Range | Desc |
+|---|---|
+| 100-199 | Informational |
+| 200-299 | Successful |
+| 300-399 | Redirection |
+| 400-499 | Client error |
+| 500-599 | Server error |
+
+> 401 - Authentication Required
+> 404 - File not found
+> 500 - Internal Server Error
+
+MIME Content Types
+> Multipurpose Internal Mail-Extension
+> Basic Syntax: type/sub-type
+> e.g text/html, text/plain, ...
+> e.g application/json, application/xml, ...
+
