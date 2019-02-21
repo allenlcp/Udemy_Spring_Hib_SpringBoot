@@ -485,3 +485,9 @@ So as you can see, it depends on the context.
 In our training video, we are using @OneToMany uni-directional (course has one-to-many reviews).
 
 As a result, the join column / foreign key column is in the target entity. In this case, the target entity is the Review class. So, you will find the join column "course_id" in the "review" table.
+
+
+___
+
+@After runs before (@AfterThrowing and @AfterReturning)
+@After don't have access to the results and exceptions
