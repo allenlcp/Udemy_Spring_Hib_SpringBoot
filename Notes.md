@@ -538,3 +538,11 @@ MIME Content Types
 > e.g text/html, text/plain, ...
 > e.g application/json, application/xml, ...
 
+___
+
+put ? after url to refresh caching
+
+___
+
+Intellij setup
+- Project Settings -> Modules -> Update "Web Resource Directories" accordingly -> point to "web" folder
