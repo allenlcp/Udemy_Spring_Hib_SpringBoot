@@ -688,3 +688,9 @@ java -jar app.jar    (run in target folder)
 ```
 > To stop with Ctrl+C
 
+
+## **Inject Custom App Properties**
+> by default, spring boot reads info from std properties file
+> located at src/main/resources/application.properties
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
