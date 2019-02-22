@@ -694,3 +694,147 @@ java -jar app.jar    (run in target folder)
 > located at src/main/resources/application.properties
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+
+___
+
+## **Hibernate vs Jpa**
+![Hibernate vs Jpa](images//img_001.png)
+
+___
+
+## **Spring Data JPA**
+>
+
+## **Spring Data REST**
+> Option to change name of endpoints
+@RepositoryRestResource(path="members")
+> Option to change pagination (default 20)
+spring.data.rest.default-page-size=20
+> Option to sort
+http://localhost:8080/magic-api/employees?sort=lastName,desc
+
+## **HATEOAS**
+> stands for 'H'ypermedia 'a's 't'he 'E'ngine 'o'f 'A'pplication 'S'tate
+> uses 'H'ypertext 'A'pplication 'L'anguage (HAL) data format
+
+___
+## Optional
+https://www.baeldung.com/java-optional
+
+
+___
+
+FAQ: How to configure the Spring Dispatcher Servlet using all Java Code (no xml)
+Section 11, Lecture 102
+Question:
+
+How to configure the Spring Dispatcher Servlet using all Java Code (no xml)?
+
+Answer:
+
+Good question!
+
+For Spring MVC, we cover all Java config (no xml) later in the course, complete with videos/explanation and everything.
+
+However, if you just need the code, here are the steps
+
+1. Delete the files: web.xml file and spring-mvc-demo-servlet.xml files
+
+2. Create a new Java package: com.luv2code.springdemo.config
+
+3. Add the following Java files in your package
+
+File: DemoAppConfig.java
+
+package com.luv2code.springdemo.config;
+ 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+ 
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages="com.luv2code.springdemo")
+public class DemoAppConfig {
+ 
+	// define a bean for ViewResolver
+ 
+	@Bean
+	public ViewResolver viewResolver() {
+		
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
+		
+		return viewResolver;
+	}
+	
+}
+---
+
+File: MySpringMvcDispatcherServletInitializer.java
+
+package com.luv2code.springdemo.config;
+ 
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+ 
+public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+ 
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] { DemoAppConfig.class };
+	}
+ 
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };
+	}
+ 
+}
+4. Test your app
+
+Your app should work as desired.
+
+---
+
+I also uploaded a full project implementation with code here
+
+https://drive.google.com/open?id=1_5__2SggzgFHt7Rs2YYsv5JHRVX5Orq3
+
+---
+
+For a discussion on how this code works, you can skip ahead to the following video
+
+Video 403 - Spring MVC All Java Config
+
+https://www.udemy.com/spring-hibernate-tutorial/learn/v4/t/lecture/8355870?start=148
+
+Skip ahead to time marker [02:28]
+
+---
+
+let me know if you need anything else.
+
+___
+
+
+## ***Spring MVC*
+> @Controller 
+>* -> it's a spring MVC controller
+>* -> inherits from @Component... supports scanning
+
+
+
+
+
