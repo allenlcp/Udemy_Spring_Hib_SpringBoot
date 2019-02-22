@@ -562,3 +562,129 @@ ___
 
 ## **Spring Boot**
 
+**Maven Wrapper Files**
+> mvnw - allows you to run Maven project
+> No need to have Maven installed or present on your path
+> If correct version of Maven is NOT found on your computer - it automatically download correct version and runs maven
+
+>* 1. mvnw.cmd - for MS Windows
+>* 2. mvnw.sh - for linux/mac
+
+**@SpringBootApplication**
+> Includes
+>* @EnableAutoConfiguration -> Enable Spring Boot's auto-configuration support
+>* @ComponentScan -> Enables component scanning of current package, also recursively scans sub-packages
+>* @Configuration -> Able to register extra beans with @Bean or import other configuration classes
+
+
+
+> SpringApplication.run(MycoolappApplication.class, args);
+>* Behind the scenes; springboot creates application context and register all beans; starts the embedded server e.g tomcat
+
+> More on component scanning
+>* Place your main application class in the root package above your other packages
+>* This implicitly defines a base search package
+>* Allows you to leverage default component scanning
+>* No need to explicitly reference the base package name
+
+> Default scanning is fine if everything is under the define package
+
+> For other packages we need to explicitly list base packages to scan
+``` java
+@SpringBootApplication(scanBasePackages =             {"com.company.springboot.demo.mycoolapp",
+    "com.github.web",
+    "edu.cmu.site"
+    })
+```
+
+**application.properties**
+> can add Spring boot properties
+``` bash
+server.port=8585
+coach.name=Mickey Mouse
+team.name=The Mouse Crew
+```
+
+> How to use it
+``` java
+@Value("${coach.name}")
+private String coachName;
+
+@Value("${team.name}")
+private String teamName;
+```
+
+**static folder**
+> By default, spring boot will load static resources from "/static" dir
+> e,g HTML files, CSS, JS, images, etc...
+
+**WARNING**
+> Do not use the /src/main/webapp directory if you application is packaged as a JAR
+> Although this is a std Maven directory, it works only with WAR packaging
+> It is silently ignored by most build tools if you generate a JAR
+
+**templates folder**
+> Auto config for following templates
+>* FreeMarker
+>* Thymeleaf
+>* Mustache
+
+**Unit Test**
+> Can add test to it
+
+___
+
+**Do this - pom problems - cannot read - intellij**
+Had the same issue with IntelliJ IDEA and following worked.
+
+Go to File
+Select Settings
+Select Build, Execution, Deployments
+Select Build Tools from drop down
+Select Maven from drop down
+Tick the Always update snapshots check box
+https://stackoverflow.com/questions/6642146/maven-failed-to-read-artifact-descriptor
+
+___
+
+**Enable Auto Update**
+> You need to enable the “Make project automatically” option. You can find it in Settings – Build, Execution, Deployment – Compiler
+> To open the registry, just press (Ctrl-Alt-Shift-/). In the registry window, enable the “compiler.automake.allow.when.app.running” check-box.
+
+https://stackoverflow.com/questions/33869606/intellij-15-springboot-devtools-livereload-not-working
+
+___
+
+## **Spring Boot Actuator**
+> /health -> health info about your app
+> /info -> info about your project - use application.properties files (e.g include info.app.name=My cool app)
+> /auditevents -> audit events for your app
+> /beans -> list of all beans registered in the spring app context
+> /mappings -> list of all @RequestMapping paths
+
+> By default only /health and /info are exposed
+> to expose others update application.properties file
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints
+
+
+## **Spring Boot command line**
+> Using mvnw
+``` bash
+./mvnw package
+./mvnw spring-boot:run
+```
+> Using maven
+``` bash
+mvn package
+mvn spring-boot:run (run in same level as src,pom,.. level)
+```
+
+> Outputs to /target folder
+
+> To run - run command
+``` bash
+cd target
+java -jar app.jar    (run in target folder)
+```
+> To stop with Ctrl+C
+

@@ -1,10 +1,9 @@
-package com.company.springboot.demo.mycoolapp;
+package com.company.sprinboot.demo.mycoolapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
 public class MycoolappApplication {
 
 	public static void main(String[] args) {
