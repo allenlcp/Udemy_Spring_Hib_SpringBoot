@@ -546,3 +546,19 @@ ___
 
 Intellij setup
 - Project Settings -> Modules -> Update "Web Resource Directories" accordingly -> point to "web" folder
+
+___
+
+Hibernate
+> saveOrUpdate() method
+``` java
+if (primaryKey/id) empty (means null or 0)
+then INSERT new customer
+else UPDATE existing customer
+```
+
+
+___
+
+## **Spring Boot**
+
