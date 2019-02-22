@@ -834,6 +834,97 @@ ___
 >* -> it's a spring MVC controller
 >* -> inherits from @Component... supports scanning
 
+___
+
+FAQ: How to use CSS, JavaScript and Images in Spring MVC Web App
+Section 12, Lecture 116
+Question
+
+How do I use CSS, JavaScript and Images in a Spring MVC Web App?
+
+Answer
+
+Here are the steps on how to access static resources in a Spring MVC. For example, you can use this to access images, css, JavaScript files etc.
+
+Any static resource is processed as a URL Mapping in Spring MVC. You can configure references to static resources in the spring-mvc-demo-servlet.xml.
+
+I chose to put everything in the "resources" directory. But you can use any name for "resources", such as "assets", "foobar" etc. Also, you can give any name that you want for the subdirectories under "resources".
+___
+
+## **Build and deploy war**
+
+IntelliJ has different process to build war:
+
+Goto -> Files -> Project Structure -> Artifacts
+
+In artifacts tab, you will see a small + button on top right corner. Click it and fill up the right panel data such as name and output directory.
+
+Make sure to create the Manifest file. Keep default location for Manifest file.
+
+After building manifest, click apply->Ok.
+
+Now you can go to Build-> Build Artifact.
+
+Your .war file will be ready in the output folder you specified above.
+
+____
+
+6. Deploy your new WAR file by copying it to <tomcat-install-directory>\webapps
+
+Give it about 10-15 seconds to make the deployment. You'll know the deployment is over because you'll see a new folder created in webapps ... with your WAR file name.
+
+7. Visit your new app. If your war file was: mycoolapp.war then you can access it with:  http://localhost:8080/mycoolapp/
+
+____
+
+``` java
+public String method(@RequestParam("studentName") String theName, Model model) {
+
+}
+
+```
+> Spring has special annotation @RequesetParam("studentName") to read param from request: studentName and bind it to the variable: theName
+
+____
+
+
+**@RequestMapping conflict same endpoints**
+> runtime error - There is already 'helloWorldController' bean method
+
+> How to resolve that
+>* 1. Add parent request mapping at start of class
+
+____
+
+
+FAQ: How does "processForm" work for "/hello"?
+Section 13, Lecture 123
+FAQ: 
+
+Question: Can you please clarify how /hello is getting appended to the jsp file action for "processForm"?
+
+Answer
+
+You can use "processForm" because it is a relative path to the controller "/hello" request mapping. Here is how it works.
+
+1. When you wish to view the form, the HTML link points to "hello/showForm". This calls the controller and it displays the form.
+
+2. At this point the browser URL/path is: http://localhost:8080/spring-mvc-demo/hello
+
+3. The HTML form uses "processForm" for the form action. Notice that it does not have a forward slash, as a result, this will be relative to the current browser URL. Since the current browser URL is 
+
+http://localhost:8080/spring-mvc-demo/hello
+
+Then the actual form URL submission will send it to
+
+http://localhost:8080/spring-mvc-demo/hello/processForm
+
+The part in bold with map to the controller with top-level request mapping "/hello" and then map to request mapping in that class "/processForm"
+
+The key here is relative path of showing the form and then submitting to relative path.
+
+___
+
 
 
 
